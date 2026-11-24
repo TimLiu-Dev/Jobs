@@ -1,0 +1,81 @@
+/* ==========================================================================
+   2027 U.S. Android Engineering Career & Job-Hop Command Center — Styles
+   ========================================================================== */
+
+/* Custom range slider styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 9999px;
+  background: #334155;
+}
+
+html:not(.dark) input[type="range"]::-webkit-slider-runnable-track {
+  background: #cbd5e1;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -5px;
+  height: 16px;
+  width: 16px;
+  border-radius: 9999px;
+  background: #6366f1;
+  border: 2px solid #0f172a;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  transition: transform 0.12s ease, background-color 0.12s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+  background: #818cf8;
+}
+
+html:not(.dark) input[type="range"]::-webkit-slider-thumb {
+  border-color: #ffffff;
+}
+
+/* Custom subtle scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 9999px;
+}
+
+html:not(.dark) ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+
+/* Smooth slide-over drawer transitions */
+#detail-drawer {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#drawer-backdrop {
+  transition: opacity 0.2s ease;
+}
+
+/* Subtle row highlight */
+.company-row {
+  transition: background-color 0.12s ease;
+}
+
+/* Tabular numbers for aligned salary & score columns */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}

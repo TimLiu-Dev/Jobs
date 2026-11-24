@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2027 U.S. Android Engineering Career &amp; Job-Hop Command Center (616 Companies)</title>
+  <!-- Apply saved theme before first paint (prevents a dark flash for light-mode users) -->
+  <script>
+    try {
+      if (localStorage.getItem('android_cmd_2027_theme_v2') === 'light') {
+        document.documentElement.classList.remove('dark');
+      }
+    } catch (e) {}
+  </script>
+  <!-- Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <!-- External Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white transition-colors duration-150">
+
+  <!-- Hidden file input for JSON CRM Import -->
+  <input type="file" id="input-import-json" accept=".json,application/json" class="hidden" />
+
+  <!-- Top Sticky Command Header -->
+  <header class="sticky top-0 z-30 bg-white/95 dark:bg-slate-950/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800/90">
+    <div class="max-w-[1480px] mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-3">
+        <!-- Title & Baseline Context -->
+        <div class="flex items-start sm:items-center gap-3">
+          <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 via-teal-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-950/30">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+            </svg>
+          </div>
+          <div>
+            <div class="flex flex-wrap items-center gap-2">
+              <h1 class="text-base sm:text-lg font-extrabold tracking-tight text-slate-900 dark:text-white">
+                2027 U.S. Android Engineering Career &amp; Job-Hop Command Center
+              </h1>
+              <span id="header-count-badge" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-indigo-100 text-indigo-800 dark:bg-indigo-950/90 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-700/70">
+                <span data-total-count>616</span> Companies
+              </span>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
+              JHT Mid-Level Baseline (~2–3 YOE in 2027) • Kotlin, Jetpack Compose, Custom AOSP, Unix Socket IPC &amp; BLE/FTMS
+            </p>
+          </div>
+        </div>
+
+        <!-- Global Career Track Toggle + Strategy Panels + Theme Toggle -->
+        <div class="flex flex-wrap items-center gap-2">
+          <!-- Global Career Level Mode Toggle -->
+          <div class="inline-flex items-center p-1 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800" role="group" aria-label="Global Career Level Mode">
+            <button type="button" data-level="BOTH" class="level-btn px-2.5 py-1.5 rounded-lg text-xs font-semibold transition bg-indigo-600 text-white shadow-sm">
+              Both (Mid + Senior)
+            </button>
+            <button type="button" data-level="MID" class="level-btn px-2.5 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+              Mid-Level (SWE II / L4)
+            </button>
+            <button type="button" data-level="SENIOR" class="level-btn px-2.5 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+              Senior Stretch (SWE III / L5)
+            </button>
+          </div>
+
+          <div class="h-5 w-px bg-slate-200 dark:bg-slate-800 hidden sm:block"></div>
+
+          <!-- Senior vs Mid Strategy Panel Button -->
+          <button id="btn-toggle-strategy" type="button" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-amber-50 hover:bg-amber-100 text-amber-800 dark:bg-slate-900 dark:hover:bg-slate-800 dark:text-amber-300 border border-amber-300/70 dark:border-slate-800 transition">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <span>Senior vs. Mid 2027 Strategy</span>
+          </button>
+
+          <!-- Metro Comparison Strip Button -->
+          <button id="btn-toggle-metros" type="button" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-sky-50 hover:bg-sky-100 text-sky-800 dark:bg-slate-900 dark:hover:bg-slate-800 dark:text-sky-300 border border-sky-300/70 dark:border-slate-800 transition">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span>Metro Hub Strip</span>
+          </button>
+
+          <!-- Dark / Light Theme Toggle -->
+          <button id="btn-theme-toggle" type="button" aria-label="Toggle dark or light mode" title="Toggle Dark / Light Mode" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 transition">
+            <svg id="icon-sun" class="w-4 h-4 hidden dark:block text-amber-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <svg id="icon-moon" class="w-4 h-4 block dark:hidden text-indigo-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-[1480px] mx-auto px-4 sm:px-6 lg:px-8 py-5 space-y-5">
+
+    <!-- Collapsible Panel 1: Senior vs. Mid 2027 Strategy & Interactive Senior Readiness Tracker -->
+    <section id="panel-strategy" class="bg-white dark:bg-slate-900/95 rounded-2xl border border-amber-300 dark:border-amber-900/60 p-4 sm:p-5 shadow-sm">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+          <h2 class="text-xs font-extrabold uppercase tracking-wider text-amber-800 dark:text-amber-300">
+            Senior vs. Mid-Level 2027 Career Strategy &amp; Interactive Senior Readiness Tracker
+          </h2>
+          <span id="senior-readiness-badge" class="px-2 py-0.5 rounded-full text-[11px] font-mono font-bold bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-800">
+            0/6 Senior Milestones Ready
+          </span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="btn-quick-senior-mode" type="button" class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white transition">
+            Activate Senior Stretch View
+          </button>
+          <button type="button" data-close-panel="panel-strategy" class="text-xs font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 transition">
+            Collapse
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <!-- Track A: Senior Stretch Track -->
+        <div class="rounded-xl p-4 bg-indigo-50/70 dark:bg-slate-950/90 border border-indigo-200 dark:border-indigo-800/60 space-y-2.5">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-0.5 rounded-md text-xs font-bold bg-indigo-600 text-white">
+              Track A: Direct Senior (SWE III / L5)
+            </span>
+            <span class="font-mono text-xs font-bold text-indigo-700 dark:text-indigo-300">Tiers 1–6 &amp; Series B/C</span>
+          </div>
+          <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+            Since you are already Mid-Level at JHT (~2–3 YOE by 2027), Big Tech rarely hires external L5s under 5 YOE—<strong>but fitness hardware, embedded AOSP, POS/kiosk, and Series B/C orgs will</strong>. Your ownership of custom AOSP consoles, Unix socket IPC, custom IMEs, BLE/FTMS telemetry, and multi-brand Jetpack Compose theming directly solves their hardest bottlenecks.
+          </p>
+          <ul class="text-xs text-slate-600 dark:text-slate-400 space-y-1 list-disc list-inside">
+            <li><strong class="text-slate-900 dark:text-slate-200">Prime Direct Senior Targets:</strong> Peloton/Precor, Tonal, Hydrow, Life Fitness, Toast, Block (Square), Fiserv (Clover), Shopify POS, Zebra, Rivian, Samsara, Motive, Procore.</li>
+            <li><strong class="text-slate-900 dark:text-slate-200">Target Comp Jump:</strong> $195k–$310k+ TC (up from mid-band baseline) with Senior title &amp; architecture scope.</li>
+          </ul>
+        </div>
+
+        <!-- Track B: High-Comp Mid-Level Track -->
+        <div class="rounded-xl p-4 bg-emerald-50/70 dark:bg-slate-950/90 border border-emerald-200 dark:border-emerald-800/60 space-y-2.5">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-0.5 rounded-md text-xs font-bold bg-emerald-600 text-white">
+              Track B: High-Comp Mid (SWE II / L4)
+            </span>
+            <span class="font-mono text-xs font-bold text-emerald-700 dark:text-emerald-300">Tiers 3 &amp; 8–12</span>
+          </div>
+          <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+            An L4 / SWE II offer at Google (~$328k), Meta (~$301k), Amazon (~$274k), Plaid (~$328k), Coinbase (~$265k), or Bloomberg pays <strong>more than most Senior roles elsewhere</strong>, while giving you a clean 12–18 month runway to earn an internal L5 promotion without Staff-level expectations on Day 1.
+          </p>
+          <ul class="text-xs text-slate-600 dark:text-slate-400 space-y-1 list-disc list-inside">
+            <li><strong class="text-slate-900 dark:text-slate-200">Prime L4 Targets:</strong> Google (Pixel Watch/XR), Apple (Watch/GymKit), Capital One, JPMorgan, Expedia, Match Group, Klaviyo, Plaid, Coinbase, Datadog.</li>
+            <li><strong class="text-slate-900 dark:text-slate-200">Prep Focus:</strong> CodeSignal / LeetCode Mid-96 + Kotlin Coroutines/Flow, Compose state hoisting, and modular architecture.</li>
+          </ul>
+        </div>
+
+        <!-- Interactive 2027 Senior Readiness Checklist -->
+        <div class="rounded-xl p-4 bg-slate-50 dark:bg-slate-950/90 border border-slate-200 dark:border-slate-800 space-y-2.5">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-0.5 rounded-md text-xs font-bold bg-slate-800 dark:bg-slate-700 text-white">
+              2027 Senior Readiness Checklist
+            </span>
+            <span id="senior-readiness-pct" class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">0%</span>
+          </div>
+          <!-- Progress bar -->
+          <div class="w-full h-1.5 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+            <div id="senior-readiness-bar" class="h-full bg-gradient-to-r from-indigo-500 to-emerald-500 transition-all duration-200" style="width: 0%"></div>
+          </div>
+          <div id="senior-checklist-container" class="space-y-1.5 max-h-44 overflow-y-auto pr-1">
+            <!-- Populated dynamically by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Collapsible Panel 2: Metro Hub Comparison Strip -->
+    <section id="panel-metros" class="hidden bg-white dark:bg-slate-900/95 rounded-2xl border border-sky-300 dark:border-sky-900/60 p-4 sm:p-5 shadow-sm">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-sky-400"></span>
+          <h2 class="text-xs font-extrabold uppercase tracking-wider text-sky-800 dark:text-sky-300">
+            2027 Relocation &amp; Metro Hub Comparison Strip (Click Any Card to Filter)
+          </h2>
+        </div>
+        <button type="button" data-close-panel="panel-metros" class="text-xs font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 transition">
+          Collapse
+        </button>
+      </div>
+      <div id="metro-cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+        <!-- Populated dynamically by JS -->
+      </div>
+    </section>
+
+    <!-- 1. Application Pipeline CRM Strip -->
+    <section class="bg-white dark:bg-slate-900/90 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm space-y-3">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+            Application Pipeline CRM
+          </span>
+          <span id="crm-active-badge" class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-800/70">
+            0 Active Targets
+          </span>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="btn-load-starter" type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-amber-500/15 hover:bg-amber-500/25 text-amber-800 dark:text-amber-300 border border-amber-400/50 dark:border-amber-500/30 transition">
+            <span>★ Load <span id="starter-count">50</span> Recommended Starter Targets</span>
+          </button>
+          <button id="btn-export-json" type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 transition">
+            <span>Export JSON Backup</span>
+          </button>
+          <button id="btn-import-json" type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 transition">
+            <span>Import JSON Backup</span>
+          </button>
+          <button id="btn-clear-pipeline" type="button" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-medium text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/50 transition">
+            <span>Clear Pipeline</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 9 Clickable Funnel Pills -->
+      <div id="pipeline-funnel-bar" class="flex flex-wrap gap-1.5 sm:gap-2">
+        <!-- Populated dynamically by JS -->
+      </div>
+    </section>
+
+    <!-- 2. Live KPI Summary Strip -->
+    <section class="grid grid-cols-2 lg:grid-cols-4 gap-3" aria-label="Filtered KPI Summary">
+      <div class="bg-white dark:bg-slate-900/90 rounded-2xl border border-slate-200 dark:border-slate-800 p-3.5 sm:p-4">
+        <span class="text-xs font-medium text-slate-500 dark:text-slate-400">Filtered Companies</span>
+        <div class="mt-1.5 flex items-baseline gap-2">
+          <span id="kpi-filtered" class="text-2xl sm:text-3xl font-extrabold tabular-nums text-slate-900 dark:text-white">616</span>
+          <span class="text-xs font-mono text-slate-500">/ <span data-total-count>616</span> total</span>
+        </div>
+      </div>
+
+      <div class="bg-white dark:bg-slate-900/90 rounded-2xl border border-slate-200 dark:border-slate-800 p-3.5 sm:p-4">
+        <span class="text-xs font-medium text-slate-500 dark:text-slate-400">Band A / B High-Comp</span>
+        <div class="mt-1.5 flex flex-wrap items-baseline gap-2">
+          <span id="kpi-high-comp" class="text-2xl sm:text-3xl font-extrabold tabular-nums text-emerald-600 dark:text-emerald-400">0</span>
+          <span id="kpi-high-comp-sub" class="text-xs font-mono text-slate-500 dark:text-slate-400">A: 0 • B: 0</span>
+        </div>
+      </div>
+
+      <div class="bg-white dark:bg-slate-900/90 rounded-2xl border border-slate-200 dark:border-slate-800 p-3.5 sm:p-4">
+        <span class="text-xs font-medium text-slate-500 dark:text-slate-400">Mid &amp; Senior Realistic</span>
+        <div class="mt-1.5 flex items-baseline gap-2">
+          <span id="kpi-level-fit" class="text-2xl sm:text-3xl font-extrabold tabular-nums text-indigo-600 dark:text-indigo-400">0</span>
+          <span class="text-xs text-slate-500">direct L5 or L4 pipeline</span>
+        </div>
+      </div>
+
+      <div class="bg-white dark:bg-slate-900/90 rounded-2xl border border-slate-200 dark:border-slate-800 p-3.5 sm:p-4">
+        <span class="text-xs font-medium text-slate-500 dark:text-slate-400">All-Remote / WFA Friendly</span>
+        <div class="mt-1.5 flex items-baseline gap-2">
+          <span id="kpi-wfa" class="text-2xl sm:text-3xl font-extrabold tabular-nums text-sky-600 dark:text-sky-400">0</span>
+          <span class="text-xs text-slate-500">All-Remote or 20–90d WFA</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Smart Reordering, Weighting Sliders, Multi-Dimensional Filters & Exports -->
+    <section class="bg-white dark:bg-slate-900/90 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 sm:p-5 space-y-4 shadow-sm">
+
+      <!-- Sort Modes Bar -->
+      <div>
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+            Smart Reordering &amp; Weighting Engine
+          </span>
+          <span id="sort-description" class="text-xs text-slate-500 dark:text-slate-400">
+            Ordered by hardware/OS stack proximity to Johnson Health Tech (#1 → #616)
+          </span>
+        </div>
+
+        <div id="sort-pills" class="flex flex-wrap gap-2">
+          <button type="button" data-sort="master" class="sort-pill px-3.5 py-2 rounded-xl text-xs font-semibold transition bg-indigo-600 text-white shadow-sm">
+            Master Order (#1→#616)
+          </button>
+          <button type="button" data-sort="composite" class="sort-pill px-3.5 py-2 rounded-xl text-xs font-semibold transition bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 inline-flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+            </svg>
+            <span>Smart Composite Score</span>
+          </button>
+          <button type="button" data-sort="pay" class="sort-pill px-3.5 py-2 rounded-xl text-xs font-semibold transition bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200">
+            Highest Comp
+          </button>
+          <button type="button" data-sort="fit" class="sort-pill px-3.5 py-2 rounded-xl text-xs font-semibold transition bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200">
+            Closest Stack Fit
+          </button>
+          <button type="button" data-sort="wlb" class="sort-pill px-3.5 py-2 rounded-xl text-xs font-semibold transition bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200">
+            Best WLB
+          </button>
+          <button type="button" data-sort="pipeline" class="sort-pill px-3.5 py-2 rounded-xl text-xs font-semibold transition bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200">
+            Pipeline Stage
+          </button>
+        </div>
+
+        <!-- Smart Composite 5-Factor Weighting Panel -->
+        <div id="composite-panel" class="hidden mt-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-950/90 border border-indigo-300 dark:border-indigo-800/60 space-y-3">
+          <div class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-2">
+            <div>
+              <h3 class="text-xs font-bold text-indigo-700 dark:text-indigo-300">5-Factor Custom Weighted Composite Score</h3>
+              <p class="text-[11px] font-mono text-slate-500 dark:text-slate-400 mt-0.5">
+                Weights: Stack (<span id="lbl-w-fit">30</span>%) • Comp (<span id="lbl-w-pay">30</span>%) • WLB (<span id="lbl-w-wlb">15</span>%) • Level Fit (<span id="lbl-w-lvl">15</span>%) • WFA (<span id="lbl-w-wfa">10</span>%)
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <button type="button" data-preset="30,30,15,15,10" class="preset-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-slate-300 dark:border-slate-700 transition">
+                Balanced 2027
+              </button>
+              <button type="button" data-preset="10,60,10,10,10" class="preset-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-slate-300 dark:border-slate-700 transition">
+                Max Comp
+              </button>
+              <button type="button" data-preset="55,15,10,15,5" class="preset-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-slate-300 dark:border-slate-700 transition">
+                Hardware &amp; AOSP Leverage
+              </button>
+              <button type="button" data-preset="35,20,5,35,5" class="preset-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-slate-300 dark:border-slate-700 transition">
+                Senior Stretch
+              </button>
+              <button type="button" data-preset="15,25,35,5,20" class="preset-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-slate-300 dark:border-slate-700 transition">
+                Chill &amp; WFA
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 pt-1">
+            <div class="bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
+              <div class="flex justify-between text-xs font-semibold mb-1.5">
+                <span class="text-slate-700 dark:text-slate-300">Stack Overlap</span>
+                <span id="val-w-fit" class="font-mono text-indigo-600 dark:text-indigo-400">30%</span>
+              </div>
+              <input id="slider-fit" type="range" min="0" max="100" step="5" value="30" class="w-full" />
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
+              <div class="flex justify-between text-xs font-semibold mb-1.5">
+                <span class="text-slate-700 dark:text-slate-300">Comp Band</span>
+                <span id="val-w-pay" class="font-mono text-emerald-600 dark:text-emerald-400">30%</span>
+              </div>
+              <input id="slider-pay" type="range" min="0" max="100" step="5" value="30" class="w-full" />
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
+              <div class="flex justify-between text-xs font-semibold mb-1.5">
+                <span class="text-slate-700 dark:text-slate-300">WLB</span>
+                <span id="val-w-wlb" class="font-mono text-sky-600 dark:text-sky-400">15%</span>
+              </div>
+              <input id="slider-wlb" type="range" min="0" max="100" step="5" value="15" class="w-full" />
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
+              <div class="flex justify-between text-xs font-semibold mb-1.5">
+                <span class="text-slate-700 dark:text-slate-300">Senior/Mid Fit</span>
+                <span id="val-w-lvl" class="font-mono text-amber-600 dark:text-amber-400">15%</span>
+              </div>
+              <input id="slider-lvl" type="range" min="0" max="100" step="5" value="15" class="w-full" />
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
+              <div class="flex justify-between text-xs font-semibold mb-1.5">
+                <span class="text-slate-700 dark:text-slate-300">WFA Flexibility</span>
+                <span id="val-w-wfa" class="font-mono text-purple-600 dark:text-purple-400">10%</span>
+              </div>
+              <input id="slider-wfa" type="range" min="0" max="100" step="5" value="10" class="w-full" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metro Hub Pills -->
+      <div class="pt-3 border-t border-slate-200 dark:border-slate-800/80">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-slate-600 dark:text-slate-400">Metro Hub Filter</span>
+          <span id="active-metro-label" class="text-xs text-slate-500 dark:text-slate-400">Showing all U.S. metros</span>
+        </div>
+        <div id="metro-pills" class="flex flex-wrap gap-1.5">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Comp Band Pills & Level Fit Pills -->
+      <div class="pt-3 border-t border-slate-200 dark:border-slate-800/80 grid grid-cols-1 lg:grid-cols-2 gap-3">
+        <!-- Comp Band Pills -->
+        <div>
+          <span class="block text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Comp Band</span>
+          <div id="band-pills" class="flex flex-wrap gap-1.5">
+            <button type="button" data-band="ALL" class="band-pill px-3 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300">All Bands</button>
+            <!-- Ranges = Mid low → Senior high from the Comp Band benchmark key in the .md matrix -->
+            <button type="button" data-band="A" class="band-pill px-3 py-1.5 rounded-xl text-xs font-mono font-semibold transition bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-emerald-700 dark:text-emerald-300">Band A ($255k–$480k+)</button>
+            <button type="button" data-band="B" class="band-pill px-3 py-1.5 rounded-xl text-xs font-mono font-semibold transition bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-blue-700 dark:text-blue-300">Band B ($195k–$360k)</button>
+            <button type="button" data-band="C" class="band-pill px-3 py-1.5 rounded-xl text-xs font-mono font-semibold transition bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-violet-700 dark:text-violet-300">Band C ($140k–$235k)</button>
+            <button type="button" data-band="D" class="band-pill px-3 py-1.5 rounded-xl text-xs font-mono font-semibold transition bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300">Band D ($100k–$185k)</button>
+          </div>
+        </div>
+
+        <!-- Level Fit Pills -->
+        <div>
+          <span class="block text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Senior / Mid Level Fit</span>
+          <div id="levelfit-pills" class="flex flex-wrap gap-1.5">
+            <button type="button" data-levelfit="ALL" class="levelfit-pill px-3 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300">All Levels</button>
+            <button type="button" data-levelfit="Mid & Senior" class="levelfit-pill px-3 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300">Mid &amp; Senior</button>
+            <button type="button" data-levelfit="Mid Pipeline Strong" class="levelfit-pill px-3 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300">Mid Pipeline Strong</button>
+            <button type="button" data-levelfit="Senior Stretch" class="levelfit-pill px-3 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300">Senior Stretch</button>
+            <button type="button" data-levelfit="Senior-Only Bar" class="levelfit-pill px-3 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300">Senior-Only Bar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search + Dropdowns (Tier, WFA, Interview Loop, WLB) -->
+      <div class="pt-3 border-t border-slate-200 dark:border-slate-800/80 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-2.5">
+        <!-- Search -->
+        <div class="relative lg:col-span-4">
+          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+            <svg class="h-4 w-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Search company, brand, stack, city, notes... (Press /)"
+            class="block w-full rounded-xl border border-slate-300 dark:border-slate-700/90 bg-slate-50 dark:bg-slate-950 pl-9 pr-8 py-2.5 text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition"
+          />
+          <button id="btn-clear-search" type="button" aria-label="Clear search" class="hidden absolute inset-y-0 right-0 flex items-center pr-2.5 text-slate-400 hover:text-slate-700 dark:hover:text-white">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Tier Dropdown -->
+        <div class="lg:col-span-2">
+          <select id="filter-tier" aria-label="Filter by Domain Tier" class="block w-full rounded-xl border border-slate-300 dark:border-slate-700/90 bg-slate-50 dark:bg-slate-950 px-3 py-2.5 text-xs sm:text-sm text-slate-800 dark:text-slate-200 focus:border-indigo-500 focus:outline-none">
+            <option value="ALL">All 12 Domain Tiers</option>
+          </select>
+        </div>
+
+        <!-- WFA / Remote Dropdown -->
+        <div class="lg:col-span-2">
+          <select id="filter-wfa" aria-label="Filter by WFA / Remote Policy" class="block w-full rounded-xl border border-slate-300 dark:border-slate-700/90 bg-slate-50 dark:bg-slate-950 px-3 py-2.5 text-xs sm:text-sm text-slate-800 dark:text-slate-200 focus:border-indigo-500 focus:outline-none">
+            <option value="ALL">All WFA / Remote Policies</option>
+            <option value="ANY_WFA">Any Remote or WFA (20–90d)</option>
+            <option value="All-Remote">All-Remote</option>
+            <option value="WFA 60–90d">WFA 60–90d</option>
+            <option value="WFA 20–30d">WFA 20–30d</option>
+            <option value="Hybrid / Onsite">Hybrid / Onsite</option>
+          </select>
+        </div>
+
+        <!-- Interview Loop Type Dropdown -->
+        <div class="lg:col-span-2">
+          <select id="filter-interview" aria-label="Filter by Interview Loop Type" class="block w-full rounded-xl border border-slate-300 dark:border-slate-700/90 bg-slate-50 dark:bg-slate-950 px-3 py-2.5 text-xs sm:text-sm text-slate-800 dark:text-slate-200 focus:border-indigo-500 focus:outline-none">
+            <option value="ALL">All Interview Loops</option>
+            <option value="AOSP / BLE / Hardware Systems">AOSP / BLE / Hardware Systems</option>
+            <option value="Live Compose / Android Build">Live Compose / Android Build</option>
+            <option value="CodeSignal / LeetCode OA">CodeSignal / LeetCode OA</option>
+            <option value="Architecture / Take-Home">Architecture / Take-Home</option>
+          </select>
+        </div>
+
+        <!-- WLB Dropdown -->
+        <div class="lg:col-span-2">
+          <select id="filter-wlb" aria-label="Filter by Work-Life Balance" class="block w-full rounded-xl border border-slate-300 dark:border-slate-700/90 bg-slate-50 dark:bg-slate-950 px-3 py-2.5 text-xs sm:text-sm text-slate-800 dark:text-slate-200 focus:border-indigo-500 focus:outline-none">
+            <option value="ALL">All WLB Profiles</option>
+            <option value="High WLB">High WLB</option>
+            <option value="Balanced">Balanced</option>
+            <option value="High Pace / Startup">High Pace / Startup</option>
+            <option value="Regulated / Enterprise">Regulated / Enterprise</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Quick Boolean Toggles + Reset + Export Suite -->
+      <div class="pt-3 border-t border-slate-200 dark:border-slate-800/80 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="toggle-realistic-yoe" type="button" class="px-3 py-1.5 rounded-xl text-xs font-semibold border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-950 text-slate-700 dark:text-slate-300 hover:border-indigo-500/60 transition">
+            2–3 YOE Realistic Only (Hide Senior-Only Traps)
+          </button>
+
+          <button id="toggle-followup-due" type="button" class="px-3 py-1.5 rounded-xl text-xs font-semibold border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-950 text-slate-700 dark:text-slate-300 hover:border-amber-500/60 transition">
+            ⏰ Follow-ups Due (<span id="followup-count">0</span>)
+          </button>
+
+          <button id="toggle-hide-watchlist" type="button" class="px-3 py-1.5 rounded-xl text-xs font-semibold border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-950 text-slate-700 dark:text-slate-300 hover:border-rose-500/60 transition">
+            Hide Watchlist / Distressed (<span id="watchlist-count">2</span>)
+          </button>
+
+          <button id="btn-reset-filters" type="button" class="hidden px-3 py-1.5 rounded-xl text-xs font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/50 transition">
+            Reset All Filters
+          </button>
+        </div>
+
+        <!-- Export Suite -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="btn-copy-md" type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm transition">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+            <span>Copy Filtered Markdown</span>
+          </button>
+          <button id="btn-export-obsidian" type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-purple-100 hover:bg-purple-200 text-purple-900 dark:bg-purple-950/80 dark:hover:bg-purple-900/80 dark:text-purple-200 border border-purple-300 dark:border-purple-700/70 transition">
+            <span>Export Obsidian Note (.md)</span>
+          </button>
+          <button id="btn-export-csv" type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 transition">
+            <span>Export CSV</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Main Results Table & Mobile Cards -->
+    <section class="bg-white dark:bg-slate-900/90 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+      <!-- Top Results Sub-bar -->
+      <div class="px-4 py-2.5 bg-slate-100/80 dark:bg-slate-950/60 border-b border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-600 dark:text-slate-400">
+        <div>
+          <span id="results-range-text" class="font-semibold text-slate-900 dark:text-slate-200">Showing 1–75 of 616</span>
+          <span class="hidden sm:inline text-slate-500 ml-2">• Click any row to open CRM Drawer, Mid &amp; Senior Resume Bullets &amp; Live Job Links</span>
+        </div>
+        <button id="btn-toggle-show-all" type="button" class="px-3 py-1 rounded-lg font-semibold bg-white dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 transition">
+          Show All 616
+        </button>
+      </div>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="hidden py-16 px-4 text-center max-w-md mx-auto">
+        <div class="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <h3 class="text-base font-bold text-slate-900 dark:text-white">No companies match your active filters</h3>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          Clear one or more filters or reset to restore all <span data-total-count>616</span> U.S. Android engineering targets.
+        </p>
+        <button id="btn-empty-reset" type="button" class="mt-4 px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition">
+          Reset All Filters
+        </button>
+      </div>
+
+      <!-- Desktop Table View -->
+      <div id="desktop-table-wrapper" class="hidden lg:block overflow-x-auto max-h-[75vh]">
+        <table class="w-full text-left border-collapse">
+          <thead class="sticky top-0 z-10 bg-slate-100 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 text-[11px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+            <tr>
+              <th class="py-3 pl-4 pr-2 w-44">CRM Stage</th>
+              <th class="py-3 px-2 w-14">Rank</th>
+              <th class="py-3 px-3 w-64">Company &amp; Domain Tier</th>
+              <th class="py-3 px-3 w-44">HQ &amp; Metro Hubs</th>
+              <th id="th-comp" class="py-3 px-3 w-44">Comp (Mid / Senior)</th>
+              <th class="py-3 px-3 w-36">Fit &amp; Level Target</th>
+              <th class="py-3 px-3 w-36">WFA &amp; WLB</th>
+              <th id="th-score" class="hidden py-3 px-3 w-20 text-right">Score</th>
+              <th class="py-3 pl-3 pr-4">Interview Loop &amp; Stack Summary</th>
+            </tr>
+          </thead>
+          <tbody id="table-body" class="divide-y divide-slate-200 dark:divide-slate-800/70 text-sm">
+            <!-- Rendered by JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile / Tablet Card View -->
+      <div id="mobile-cards-wrapper" class="lg:hidden divide-y divide-slate-200 dark:divide-slate-800">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Pagination Footer -->
+      <div id="pagination-footer" class="px-4 py-3 bg-slate-100/80 dark:bg-slate-950/60 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div class="text-xs text-slate-600 dark:text-slate-400">
+          Page <span id="page-current" class="font-bold text-slate-900 dark:text-white">1</span> of <span id="page-total" class="font-bold text-slate-900 dark:text-white">9</span>
+        </div>
+        <div id="page-buttons" class="flex flex-wrap items-center justify-center gap-1.5">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pb-10 pt-2 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+      <p>Shortcuts: Press <kbd class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">/</kbd> to search, <kbd class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">Esc</kbd> to close drawer • Auto-saved locally.</p>
+      <p class="font-mono"><span data-total-count>616</span> U.S. Android Targets • 2027 Career Command Center</p>
+    </footer>
+  </main>
+
+  <!-- Slide-Over Company Detail & CRM Drawer -->
+  <div id="drawer-backdrop" class="fixed inset-0 z-40 bg-slate-950/75 backdrop-blur-sm hidden opacity-0"></div>
+  <aside
+    id="detail-drawer"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="drawer-title"
+    inert
+    class="fixed inset-y-0 right-0 z-50 w-full max-w-2xl bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 shadow-2xl transform translate-x-full flex flex-col"
+  >
+    <!-- Drawer Sticky Header -->
+    <div class="px-5 py-4 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 flex items-start justify-between gap-3">
+      <div>
+        <div class="flex flex-wrap items-center gap-2">
+          <span id="drawer-id-badge" class="font-mono text-xs font-bold px-2 py-0.5 rounded-md bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-800">#1</span>
+          <span id="drawer-stage-badge" class="text-xs font-semibold px-2 py-0.5 rounded-md bg-slate-200 text-slate-800 dark:bg-slate-800 dark:text-slate-300">Enterprise</span>
+          <span id="drawer-levelfit-badge" class="text-xs font-semibold px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800">Mid &amp; Senior</span>
+          <span id="drawer-wfa-badge" class="text-xs font-semibold px-2 py-0.5 rounded-md bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300 border border-sky-300 dark:border-sky-800">Hybrid / Onsite</span>
+        </div>
+        <h2 id="drawer-title" class="text-lg font-extrabold text-slate-900 dark:text-white mt-1.5 leading-snug">Company Name</h2>
+        <p id="drawer-hq" class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">HQ Location</p>
+      </div>
+      <button id="btn-close-drawer" type="button" aria-label="Close detail drawer" class="p-2 rounded-xl bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Drawer Scrollable Body -->
+    <div id="drawer-body" class="flex-1 overflow-y-auto p-5 space-y-5">
+      <!-- Watchlist Warning Banner -->
+      <div id="drawer-watchlist-alert" class="hidden p-3.5 rounded-xl bg-rose-50 dark:bg-rose-950/60 border border-rose-300 dark:border-rose-800/80 text-xs text-rose-800 dark:text-rose-200 flex items-start gap-2.5">
+        <svg class="w-4 h-4 text-rose-600 dark:text-rose-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <div>
+          <strong class="font-bold">Watchlist / Distressed Status:</strong> Verify active Android headcount and financial stability before prioritizing in 2027.
+        </div>
+      </div>
+
+      <!-- Side-by-Side Mid-Level (SWE II) vs Senior (SWE III / L5) Comp Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div id="drawer-card-mid" class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-1 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Mid-Level (SWE II / L4)</span>
+            <span class="font-mono text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">2–3 YOE Lateral</span>
+          </div>
+          <div id="drawer-mid-tc" class="text-lg font-mono font-extrabold text-slate-900 dark:text-white">$185k–$235k</div>
+          <p class="text-[11px] text-slate-500 dark:text-slate-400">Est. 2027 U.S. Total Comp (Base + Bonus + RSU)</p>
+        </div>
+
+        <div id="drawer-card-senior" class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-1 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Senior (SWE III / L5)</span>
+            <span class="font-mono text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300">Senior Stretch</span>
+          </div>
+          <div id="drawer-senior-tc" class="text-lg font-mono font-extrabold text-indigo-600 dark:text-indigo-300">$235k–$295k</div>
+          <p class="text-[11px] text-slate-500 dark:text-slate-400">Est. 2027 U.S. Senior Total Comp</p>
+        </div>
+      </div>
+
+      <!-- Technical Metadata Grid -->
+      <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800 space-y-2 text-xs">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <span class="text-slate-500 dark:text-slate-400">Domain Tier:</span>
+          <span id="drawer-tier" class="font-semibold text-indigo-700 dark:text-indigo-300">Tier 1</span>
+        </div>
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <span class="text-slate-500 dark:text-slate-400">Stack Overlap &amp; WLB:</span>
+          <span id="drawer-fit-wlb" class="font-mono font-semibold text-slate-800 dark:text-slate-200">10/10 Fit • High WLB</span>
+        </div>
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <span class="text-slate-500 dark:text-slate-400">Dominant Interview Loop:</span>
+          <span id="drawer-interview" class="font-semibold text-amber-700 dark:text-amber-300">AOSP / BLE / Hardware Systems</span>
+        </div>
+        <div class="pt-2 border-t border-slate-200 dark:border-slate-800/80">
+          <span class="block text-slate-500 dark:text-slate-400 mb-1">Technical &amp; Product Scope:</span>
+          <p id="drawer-notes" class="text-slate-800 dark:text-slate-200 leading-relaxed"></p>
+        </div>
+      </div>
+
+      <!-- Dual-Track Auto-Generated Resume & Pitch Bullets (Mid + Senior) -->
+      <div class="space-y-3">
+        <!-- Mid-Level Bullets -->
+        <div id="drawer-pitch-mid-box" class="p-4 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/25 border border-emerald-200 dark:border-emerald-800/60 space-y-2">
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="text-xs font-extrabold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">
+              Mid-Level (SWE II / L4) Resume &amp; Screen Bullets
+            </h3>
+            <button id="btn-copy-mid-bullets" type="button" class="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-emerald-600/15 hover:bg-emerald-600/25 text-emerald-800 dark:text-emerald-300 transition">
+              Copy Bullets
+            </button>
+          </div>
+          <ul id="drawer-pitch-mid-list" class="text-xs text-slate-700 dark:text-slate-200 space-y-1.5 list-disc list-inside leading-relaxed">
+            <!-- Populated by JS -->
+          </ul>
+        </div>
+
+        <!-- Senior Bullets -->
+        <div id="drawer-pitch-senior-box" class="p-4 rounded-xl bg-indigo-50/60 dark:bg-indigo-950/35 border border-indigo-200 dark:border-indigo-800/60 space-y-2">
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="text-xs font-extrabold uppercase tracking-wider text-indigo-800 dark:text-indigo-300">
+              Senior (SWE III / L5 Stretch) Architecture &amp; Ownership Bullets
+            </h3>
+            <button id="btn-copy-senior-bullets" type="button" class="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-indigo-600/15 hover:bg-indigo-600/25 text-indigo-800 dark:text-indigo-300 transition">
+              Copy Bullets
+            </button>
+          </div>
+          <ul id="drawer-pitch-senior-list" class="text-xs text-slate-700 dark:text-slate-200 space-y-1.5 list-disc list-inside leading-relaxed">
+            <!-- Populated by JS -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- One-Click Live Research Links -->
+      <div class="space-y-2">
+        <span class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+          One-Click Live 2027 Job &amp; Comp Research
+        </span>
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+          <a id="link-careers" href="#" target="_blank" rel="noopener noreferrer" class="col-span-2 sm:col-span-1 px-3 py-2 rounded-xl bg-indigo-100 hover:bg-indigo-200 dark:bg-indigo-950/70 dark:hover:bg-indigo-900/70 border border-indigo-300 dark:border-indigo-800/70 text-indigo-900 dark:text-indigo-200 text-xs font-semibold text-center transition">
+            Careers Page ↗
+          </a>
+          <a id="link-linkedin" href="#" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-xl bg-sky-100 hover:bg-sky-200 dark:bg-sky-950/70 dark:hover:bg-sky-900/70 border border-sky-300 dark:border-sky-800/70 text-sky-900 dark:text-sky-200 text-xs font-semibold text-center transition">
+            LinkedIn Jobs ↗
+          </a>
+          <a id="link-levels" href="#" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-xl bg-emerald-100 hover:bg-emerald-200 dark:bg-emerald-950/70 dark:hover:bg-emerald-900/70 border border-emerald-300 dark:border-emerald-800/70 text-emerald-900 dark:text-emerald-200 text-xs font-semibold text-center transition">
+            Levels.fyi ↗
+          </a>
+          <a id="link-blind" href="#" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-xs font-semibold text-center transition">
+            TeamBlind ↗
+          </a>
+          <a id="link-glassdoor" href="#" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-xs font-semibold text-center transition">
+            Glassdoor ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Personal CRM Tracking Fields -->
+      <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Personal Application CRM</h3>
+          <span id="drawer-saved-indicator" class="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 opacity-0 transition-opacity">✓ Auto-saved</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="drawer-crm-status" class="block text-[11px] font-semibold text-slate-500 dark:text-slate-400 mb-1">Pipeline Stage</label>
+            <select id="drawer-crm-status" class="w-full rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 px-3 py-2 text-xs font-semibold text-slate-900 dark:text-white focus:border-indigo-500 focus:outline-none">
+              <!-- Populated by JS -->
+            </select>
+          </div>
+          <div>
+            <label for="drawer-crm-level" class="block text-[11px] font-semibold text-slate-500 dark:text-slate-400 mb-1">My Target Level Here</label>
+            <select id="drawer-crm-level" class="w-full rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 px-3 py-2 text-xs font-semibold text-slate-900 dark:text-white focus:border-indigo-500 focus:outline-none">
+              <option value="Auto">Auto (Follow Global Toggle)</option>
+              <option value="Mid-Level (SWE II / L4)">Mid-Level (SWE II / L4)</option>
+              <option value="Senior (SWE III / L5)">Senior (SWE III / L5)</option>
+            </select>
+          </div>
+        </div>
+
+        <p id="drawer-stage-history" class="hidden text-[11px] font-mono text-slate-500 dark:text-slate-400"></p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div class="sm:col-span-2">
+            <label for="drawer-crm-contact" class="block text-[11px] font-semibold text-slate-500 dark:text-slate-400 mb-1">Referral / Recruiter Contact</label>
+            <input id="drawer-crm-contact" type="text" placeholder="e.g., Jordan M. (Staff Android Eng on LinkedIn) — warm intro" class="w-full rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 px-3 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-indigo-500 focus:outline-none" />
+          </div>
+          <div>
+            <label for="drawer-crm-followup" class="block text-[11px] font-semibold text-slate-500 dark:text-slate-400 mb-1">Next Follow-up</label>
+            <input id="drawer-crm-followup" type="date" class="w-full rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 px-3 py-2 text-xs text-slate-900 dark:text-white focus:border-indigo-500 focus:outline-none dark:[color-scheme:dark]" />
+          </div>
+        </div>
+
+        <div>
+          <label for="drawer-crm-notes" class="block text-[11px] font-semibold text-slate-500 dark:text-slate-400 mb-1">Interview Prep &amp; Application Notes</label>
+          <textarea id="drawer-crm-notes" rows="3" placeholder="CodeSignal deadline, team focus (e.g., Pixel Watch / Clover POS / AAOS), or comp notes..." class="w-full rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 px-3 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-indigo-500 focus:outline-none"></textarea>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Non-blocking Toast Notification -->
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-5 left-5 z-50 pointer-events-none opacity-0 translate-y-3 transition-all duration-200">
+    <div class="flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-slate-900 text-white text-xs font-semibold shadow-2xl border border-slate-700">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0"></span>
+      <span id="toast-message">Updated</span>
+    </div>
+  </div>
+
+  <!-- Standalone Dataset (Loaded before app.js; works over file:// and HTTP) -->
+  <script src="companies.js"></script>
+  <!-- Application Logic & CRM Controller -->
+  <script src="app.js"></script>
+</body>
+</html>
